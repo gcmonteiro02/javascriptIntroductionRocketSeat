@@ -1,0 +1,154 @@
+<html>
+  <head>
+    <title>RocketSeat Exercices</title>
+
+    <body background="#0000">
+      <h1>RocketSeat JavaScript Introduction Exercises</h1>
+      <h3 style="position: relative; margin-left: 800px;">Results</h3>
+      <div style="width:500px;height:100px;border:1px solid rgb(0, 0, 0);position: absolute; margin-left: 800px;" id="resultRetangle">
+        
+    </div>
+<!--Exercise 1-->  
+
+      <div id="exercise1Div">
+        <h3>Exercise 1 - Return a const</h3>
+        <button onclick="returnAddress()">Search Address Const</button>
+      </div>
+<!--Exercise 2-->  
+      <div id="exercise2Div">
+        <h3>Exercise 2 - Pairs numbers</h3>
+        <input id="inputX" placeholder="Initial value"></input>
+        <input id="inputY" placeholder="Final value"></input>
+        <button onclick="intervalPairs()">Get Pairs Values</button>
+      </div>
+<!--Exercise 3-->  
+      <div id="exercise3Div">
+          <h3>Exercise 3 - Check JavaScript Skill</h3>
+          <input id="addSkill" placeholder="Add skill"></input>
+          <button onclick="addSkill()">Add skill</button>
+          <button onclick="clearSkills()">Clear skills</button>
+          <button onclick="vectorChecker()">Search for JS skill</button>
+      </div>
+<!--Exercise 4-->  
+        <div id="exercise4Div">
+            <h3>Exercise 4 - Check experience</h3>
+            <input id="inputYears" placeholder="Add Years"></input>
+            <button onclick="checkExperience()">Check level</button>
+        </div> 
+
+<!--Exercise 5-->  
+        <div id="exercise5Div">
+            <h3>Exercise 5 - Build phrases</h3>
+            <button onclick=" getFixedPhrases()">Build Phrases</button>
+        </div>         
+
+       
+      <script>
+
+// Functions 
+        var resultRetangle = document.getElementById('resultRetangle');
+
+        function setRetangleContent(text){
+            resultRetangle.textContent = '';
+            var label = document.createTextNode(text)
+            resultRetangle.appendChild(label)
+        }
+ 
+// Exercise 1     
+
+        var endereco = {
+          rua: "Rua dos pinheiros",
+          numero: 1293,
+          bairro: "Centro",
+          cidade: "São Paulo",
+          uf: "SP"
+        };
+        
+        function returnAddress() {
+
+            setRetangleContent("Open your console to see the results");
+            console.log(endereco)
+        }
+
+// Exercise 2 
+
+        function intervalPairs() {
+            var valueX = document.getElementById('inputX').value;
+            var valueY = document.getElementById('inputY').value;
+            var pairs = [];
+
+            if(valueX == "" || valueY == ""){
+                alert("You need to fill the X and Y fields.")
+            }
+
+            while (valueX <= valueY) {
+                if(valueX % 2 == 0){ pairs.push(valueX);}
+                valueX++;
+            }
+            setRetangleContent(pairs);
+        }
+
+// Exercise 3
+       
+        var skills = ["JavaScript", "ReactJS", "React Native"];
+
+        function clearSkills(){
+            skills = []
+        }
+        function addSkill(){
+            var inputSkill = document.getElementById("addSkill").value
+            skills.push(inputSkill)
+        }
+
+        function vectorChecker(){
+            
+           for (let index = 0; index < skills.length; index++) {
+               var element = skills[index];
+               element == "Javascript" ? setRetangleContent("True for vector with: " + skills) : setRetangleContent("False for vector with: " + skills);
+           }
+        }
+
+// Exercise 4 
+        
+        function checkExperience(){
+            var experienceInput = document.getElementById("inputYears").value
+            
+            if(experienceInput == ""){
+                alert("Please, insert any value for experience field");
+            }
+ 
+            if(experienceInput <= 1){
+                setRetangleContent("Junior")
+            }else if(experienceInput <= 3){
+                setRetangleContent("Intermediary")
+            }else if(experienceInput <= 6){
+                setRetangleContent("Advanced")
+            }else{
+                setRetangleContent("Expert")
+            }
+        }
+
+// Exercise 5
+
+        function getFixedPhrases(){
+            var usuarios = [{nome: "Diego",habilidades: ["Javascript", "ReactJS", "Redux"]},{nome: "Gabriel",habilidades: ["VueJS", "Ruby on Rails", "Elixir"]}];
+            var textToRetangle = "";
+            for (const iterator of usuarios) {
+                var name = iterator.nome
+                var skills = iterator.habilidades.join();
+                textToRetangle = "O " + name + " possui as habilidades: " + skills + `. \r` + textToRetangle
+                setRetangleContent(textToRetangle)
+                skills = "";
+            }
+        
+        }
+      </script>
+    </body>
+  </head>
+
+  <style>body {
+    background: lightblue url("https://webgradients.com/public/webgradients_png/089%20Premium%20White.png") no-repeat fixed center;
+  }</style>
+
+</html>
+
